@@ -1,17 +1,26 @@
 > [!NOTE] 
 >   How to Install Laravel:
 >  - 1 time give this command:
->        ```composer global require laravel/installer```
+```powershell
+    composer global require laravel/installer
+```
 >  - Install now your projects
->        ``` lavral new YourprojectName ```
+```powershell 
+    lavral new YourprojectName
+```
 
 > [!WARNING] 
 > How to Uninstall Laravel Installer:
-> ```composer global remove laravel/installer```
+
+```powershell 
+    composer global remove laravel/installer
+```
 
 > [!IMPORENET] 
 > Other way to Install
-> ```composer create-project --prefer-dist laravel/laravel YourProjectName```
+```powershell
+    composer create-project --prefer-dist laravel/laravel YourProjectName
+```
 
 ### How to run the laravel Project
 ```php artisan serve```
