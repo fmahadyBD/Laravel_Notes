@@ -16,7 +16,8 @@
     composer global remove laravel/installer
 ```
 
-> [!IMPORENET] 
+
+> [!IMPORTANT]
 > Other way to Install
 ```powershell
     composer create-project --prefer-dist laravel/laravel YourProjectName
