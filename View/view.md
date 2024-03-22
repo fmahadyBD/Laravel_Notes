@@ -35,14 +35,13 @@ This is the view file:
 > Fahim this key's value
 
 ```powertshell
-
-Route::get('contact',function(){
-    return view('contact',['name'=>'Fahim']);
+    Route::get('contact',function(){
+     return view('contact',['name'=>'Fahim']);
 });
 
 ```
 
-> We must be use {{}} and same key name that we used in route
+> We must be use `{{}}` and same key name that we used in route
 
 ```powertshell
 <body>
@@ -55,8 +54,8 @@ Route::get('contact',function(){
 ##### Shortcute Method of previous type:
 
 > [!NOTE]
-> url,viewName
-> url,viewName,ArrayOfData
+> url, viewName <br>
+> url, viewName, ArrayOfData
 
 ```powertshell
 Route::view('contacturl','contact');
@@ -86,13 +85,14 @@ Hi {{$name}}
 </body>
 ```
 
+This is for Muliple data:
+
 ```powertshell
 Route::view('url','contact',['name'=>'Fahim','username'=>'fmahadyBD','active'=>'yes']);
 
 ```
 
 ```powertshell
-
 <body>
 Name: {{$name}} <br>
 Username: {{$username}} <br>
@@ -100,7 +100,9 @@ Active: {{$active}} <br>
 
 </body>
 ```
+
 ##### How to pass single data using with methods:
+
 ```powershell
 Route::get('url',function(){
 
@@ -116,41 +118,120 @@ Route::get('url',function(){
 
 ```
 
+> [!WARNING]
+> New Section is start:
 
+## Take Parameter from the URL:
+
+The Url:
+
+```powershell
+http://127.0.0.1:8000/user/123
+```
+
+```powershell
+Route::get('user/{p_id}',function($id){
+    return view('user',['pass_id'=>$id]);
+});
+```
+
+```powershell
+<body>
+{{$pass_id}}
+</body>
+```
+
+#### Muultiple parameter:
+
+```powershell
+http://127.0.0.1:8000/mypost/111/99
+```
+
+```powershell
+Route::get('mypost/{post_id}/{cata_id}',function($pid,$catid){
+    return view('mypost',['post_id'=>$pid,'catagory_id'=>$catid]);
+});
+
+```
+
+```powershell
+<body>
+Post id: {{$post_id}}<br>
+Catagory ID: {{$catagory_id}}
+</body>
+```
+
+##### Optional Parameter:
+
+```powershell
+http://127.0.0.1:8000/student/
+http://127.0.0.1:8000/student/Fahim
+
+```
+
+```powershell
+Route::get('student/{name?}',function($name=null){
+    return view('student',['name'=>$name]);
+});
+```
+
+```powershell
+<body>
+
+    The Name is: {{$name}}
+</body>
+```
+
+#### Using Reqular expression:
+
+```powershell
+http://127.0.0.1:8000/product/mobile
+```
+
+```powershell
+Route::get('product/{p_name}',function($product_name){
+    return view('myProduct',['name'=>$product_name]);
+})->where('p_name','[A-Za-z]+');
+```
+
+Or ||
+
+```powershell
+Route::get('product/{p_name}',function($product_name){
+    return view('myProduct',['name'=>$product_name]);
+})->where('p_name','[0-9]+');
+
+```
+
+OR |||
 
 ```powershell
 
+Route::get('product/{p_name}/{p_id}',function($product_name,$product_id){
+    return view('myProduct',['name'=>$product_name,'id'=>$product_id]);
+})->whereAlpha('p_name')->whereNumber('p_id');
 ```
-```powershell
 
-```
 ```powershell
-
+<body>
+Product Name: {{$name}}
+Product id: {{$id}}
+</body>
 ```
+
+### view Redirect:
+
 ```powershell
-
+Route::view('login','register');
 ```
+
+### The fallback function:
+
 ```powershell
+Route::fallback(function(){
 
+return view('defult');
+});
 ```
-```powershell
 
-```
-```powershell
 
-```
-```powershell
-
-```
-```powershell
-
-```
-```powershell
-
-```
-```powershell
-
-```
-```powershell
-
-```
